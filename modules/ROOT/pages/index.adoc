@@ -1,0 +1,17 @@
+= Introduction
+:page-topic-type: guide
+:page-toclevels: 2
+:description: The Capella Superset Connector provides ??
+
+
+
+== Prerequisites
+
+First catch your hare.
+
+
+
+== Install the Superset Connector
+
+...
+

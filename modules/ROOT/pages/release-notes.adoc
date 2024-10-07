@@ -1,0 +1,17 @@
+= Release Notes
+:page-toclevels: 2
+:description: Release notes for the Columnar Superset Connector.
+
+[abstract]
+{description}
+
+The xref:index.adoc[Couchbase Superset Connector] provides integration between Columnar...???
+
+
+
+== Version 1.0 (2024-??-??)
+
+
+
+This is the initial release of the Capella Columnar Power BI Connector.
+
