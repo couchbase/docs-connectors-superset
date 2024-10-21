@@ -1,17 +1,39 @@
 = Introduction
 :page-topic-type: guide
 :page-toclevels: 2
-:description: The Capella Superset Connector provides ??
+:description: The Couchbase SQLAlchemy Connector provides data visualization and exploration for the Couchbase platform, using Apache Superset.
 
+[abstract]
+--
+{description}
+
+The Couchbase SQLAlchemy Connector integrates Couchbase Analytics tabular views and Capella Columnar instances with the open-source data exploration and visulaization platform Apache  Superset.
+--
 
 
 == Prerequisites
 
 First catch your hare.
 
+== Install the CouchbaseSQL Alchemy Connector
+To install the Couchbase SQLAlchemy Connector, open the command prompt (`cmd`), and enter the following:
++
+[source, console]
+----
+pip install couchbase-sqlalchemy
+----
+
+== Install Apache Superset
+Download and install Apache Superset following the official documentation.
 
 
-== Install the Superset Connector
+
+
+== Configure the Connection in Superset:
+
+== Create Tabular Analytics views
+In Couchbase Analytics, define tabular analytics views. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
+https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV
 
 ...
 
