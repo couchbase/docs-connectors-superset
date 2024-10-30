@@ -17,14 +17,14 @@ First catch your hare.
 
 == Install the CouchbaseSQL Alchemy Connector
 To install the Couchbase SQLAlchemy Connector, open the command prompt (`cmd`), and enter the following:
-+
+
 [source, console]
 ----
 pip install couchbase-sqlalchemy
 ----
 
 == Install Apache Superset
-Download and install Apache Superset following the official documentation.
+Download and install https://superset.apache.org/docs/quickstart[Apache Superset] following the official documentation.
 
 == Configure the Connection in Superset:
 
@@ -39,45 +39,46 @@ Capella Columnar::
 +
 --
 Connecting Apache Superset with Capella Columnar, you'll require the following details:
-+
+
 . Connection String: Obtain this from your running Capella Columnar environment. This string typically includes necessary connection details such as the host address and port.
++
 images::get-connection-string.png[get connection string]
+
 +
 . Get UserName and Password from Access Control.
++
 images::get-username-pswrd-from-accesscontrol.png[get username and password from access control]
-+
-. Set up the server
-images::setup-the-server.png[setup the server] 
-+
 
++
+. Set up the server. 
++
+images::setup-the-server.png[setup the server]
 --
 
 Couchbase Analytics::
 +
 --
 *Couchbase Analytics with SSL*
-+
+
 . Host and Port of server. Port is 11998 in case of SSL based connections.
 . Trusted Root Certificates. Path should be accessible to superset server.
-+
-images::couchbase-analytics-with-ssl.png
+
+images::couchbase-analytics-with-ssl.png[Couchbase Analytics with SSL]
 
 *Couchbase Analytics without SSL*
-+
-Host and Port of Server. Port is 12000 in this case.
-+
-images::couchbase-analytics-without-ssl.png
---
 
-Capella Analytics::
+Host and Port of Server. Port is 12000 in this case.
+
+images::couchbase-analytics-without-ssl.png[Couchbase Analytics without SSL]
+--
 +
+Capella Analytics::
+
 --
 Steps are similar to capella-columnar. We need to get connection string from the cluster running and then create access credentials.
-+
-images::connect-a-database-capella-analytics.png
 
+images::connect-a-database-capella-analytics.png[Connect a database in Capella Analytics]
 --
-
 ====
 
 
@@ -85,6 +86,58 @@ images::connect-a-database-capella-analytics.png
 In Couchbase Analytics, define tabular analytics views. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
 https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV
 
+== Use the Couchbase Superset Connector
+
+. To create tabular views for graphical visualization, we start by loading data into a collection. For this example, we'll use a dataset called https://www.kaggle.com/datasets/gregorut/videogamesales[video_game_sales.json].
+
+. Ensure your `video_game_sales.json` file is accessible in a location that your database system can read from. This file contains structured JSON data about video game sales.
+
+. Create External dataset using `video_game_sales`.
+
+. On querying  Select * from `Default.Default.video_game_sales limit 1`. 
+
++
+[source, console]
+----
+[
+  {
+   "video_game_sales": {
+     "_columnar_ID": "691c68ce-1dd3-9e94-7a47-c041eb87fe8c",
+     "rank": "74",
+     "name": "Animal Crossing: New Leaf",
+     "platform": "3DS",
+     "year": "2012",
+     "genre": "Simulation",
+     "publisher": "Nintendo",
+     "na_sales": "2.01",
+     "eu_sales": "2.32",
+     "jp_sales": "4.36",
+     "other_sales": "0.41",
+     "global_sales": "9.09"
+   }
+ }
+]
+----
+
+. To create a tabular analytics view from the video_game_sales collection, execute the following command:
++
+[source, console]
+----
+CREATE OR REPLACE ANALYTICS VIEW
+video_game_sales_1 (_columnar_ID string, rank int, name string, platform string, year string, genre string, publisher string, na_sales double, eu_sales double, jp_sales double, other_sales double, global_sales double)
+DEFAULT NULL PRIMARY KEY (__id)
+NOT ENFORCED AS
+SELECT video_game_sales.* FROM video_game_sales;
+----
+
+=== Visualization
++
+To visualize the data, please follow these steps in Apache Superset:
++
+. Navigate to the Dataset section in the Superset dashboard.
+. Select Couchbase-Analytics-With-SSL as the database.
+. Choose Default as the schema.
+. Look for the view named *video_game_sales_1* to proceed with the data visualization.
 
 
 ...
