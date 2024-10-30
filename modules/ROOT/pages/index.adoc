@@ -21,7 +21,7 @@ pip install couchbase-sqlalchemy
 == Install Apache Superset
 Download and install https://superset.apache.org/docs/quickstart[Apache Superset] following the official documentation.
 
-== Configure the Connection in Superset:
+== Configure the Connection in Superset
 
 Launch Apache Superset and set up a new database connection. 
 Select Couchbase as the database type and provide the necessary connection details.
@@ -66,9 +66,9 @@ Host and Port of Server. Port is 11210 in this case.
 
 image::couchbase-analytics-without-ssl.png["Couchbase Analytics without SSL"]
 --
-+
-Capella Analytics::
 
+Capella Analytics::
++
 --
 Steps are similar to capella-columnar. We need to get connection string from the cluster running and then create access credentials.
 
@@ -77,7 +77,7 @@ image::connect-a-database-capella-analytics.png["Connect a database in Capella A
 ====
 
 
-== Create Tabular Analytics views
+== Create Tabular Analytics View
 In Couchbase Analytics, define https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV[Tabular Analytics Views]. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
 
 
