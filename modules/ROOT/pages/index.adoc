@@ -57,17 +57,24 @@ Couchbase Analytics::
 --
 *Couchbase Analytics with SSL*
 +
-. Host and Port of server. Port is 11998 in case of ssl based connections.
+. Host and Port of server. Port is 11998 in case of SSL based connections.
 . Trusted Root Certificates. Path should be accessible to superset server.
 +
-images::
+images::couchbase-analytics-with-ssl.png
 
+*Couchbase Analytics without SSL*
++
+Host and Port of Server. Port is 12000 in this case.
++
+images::couchbase-analytics-without-ssl.png
 --
 
 Capella Analytics::
 +
 --
-
+Steps are similar to capella-columnar. We need to get connection string from the cluster running and then create access credentials.
++
+images::connect-a-database-capella-analytics.png
 
 --
 
@@ -77,6 +84,8 @@ Capella Analytics::
 == Create Tabular Analytics views
 In Couchbase Analytics, define tabular analytics views. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
 https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV
+
+
 
 ...
 
