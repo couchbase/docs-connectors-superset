@@ -55,7 +55,12 @@ images::setup-the-server.png[setup the server]
 Couchbase Analytics::
 +
 --
-
+*Couchbase Analytics with SSL*
++
+. Host and Port of server. Port is 11998 in case of ssl based connections.
+. Trusted Root Certificates. Path should be accessible to superset server.
++
+images::
 
 --
 
