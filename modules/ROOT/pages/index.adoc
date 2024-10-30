@@ -10,11 +10,6 @@
 The Couchbase SQLAlchemy Connector integrates Couchbase Analytics tabular views and Capella Columnar instances with the open-source data exploration and visulaization platform Apache  Superset.
 --
 
-
-== Prerequisites
-
-First catch your hare.
-
 == Install the CouchbaseSQL Alchemy Connector
 To install the Couchbase SQLAlchemy Connector, open the command prompt (`cmd`), and enter the following:
 
@@ -31,7 +26,7 @@ Download and install https://superset.apache.org/docs/quickstart[Apache Superset
 Launch Apache Superset and set up a new database connection. 
 Select Couchbase as the database type and provide the necessary connection details.
 
-There are four types of connection possible:
+There are three types of connection possible:
 
 [tabs]
 ====
@@ -42,17 +37,17 @@ Connecting Apache Superset with Capella Columnar, you'll require the following d
 
 . Connection String: Obtain this from your running Capella Columnar environment. This string typically includes necessary connection details such as the host address and port.
 +
-images::get-connection-string.png[get connection string]
+image::get-connection-string.png["get connection string"]
 
 +
 . Get UserName and Password from Access Control.
 +
-images::get-username-pswrd-from-accesscontrol.png[get username and password from access control]
+image::get-username-pswrd-from-accesscontrol.png["get username and password from access control"]
 
 +
 . Set up the server. 
 +
-images::setup-the-server.png[setup the server]
+image::setup-the-server.png[setup the server]
 --
 
 Couchbase Analytics::
@@ -60,16 +55,16 @@ Couchbase Analytics::
 --
 *Couchbase Analytics with SSL*
 
-. Host and Port of server. Port is 11998 in case of SSL based connections.
+. Host and Port of server. Port is 11207 in case of SSL based connections.
 . Trusted Root Certificates. Path should be accessible to superset server.
 
-images::couchbase-analytics-with-ssl.png[Couchbase Analytics with SSL]
+image::couchbase-analytics-with-ssl.png["Couchbase Analytics with SSL"]
 
 *Couchbase Analytics without SSL*
 
-Host and Port of Server. Port is 12000 in this case.
+Host and Port of Server. Port is 11210 in this case.
 
-images::couchbase-analytics-without-ssl.png[Couchbase Analytics without SSL]
+image::couchbase-analytics-without-ssl.png["Couchbase Analytics without SSL"]
 --
 +
 Capella Analytics::
@@ -77,14 +72,14 @@ Capella Analytics::
 --
 Steps are similar to capella-columnar. We need to get connection string from the cluster running and then create access credentials.
 
-images::connect-a-database-capella-analytics.png[Connect a database in Capella Analytics]
+image::connect-a-database-capella-analytics.png["Connect a database in Capella Analytics"]
 --
 ====
 
 
 == Create Tabular Analytics views
-In Couchbase Analytics, define tabular analytics views. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
-https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV
+In Couchbase Analytics, define https://docs.couchbase.com/columnar/sqlpp/5a_views.html#TAV[Tabular Analytics Views]. These views act as non-materialized views, specifying schemas along with primary and foreign keys for collections or subqueries.
+
 
 == Use the Couchbase Superset Connector
 
@@ -131,14 +126,20 @@ SELECT video_game_sales.* FROM video_game_sales;
 ----
 
 === Visualization
-+
+
 To visualize the data, please follow these steps in Apache Superset:
-+
+
 . Navigate to the Dataset section in the Superset dashboard.
-. Select Couchbase-Analytics-With-SSL as the database.
-. Choose Default as the schema.
+. Select `Couchbase-Analytics-With-SSL` as the database.
+. Choose *Default* as the schema.
 . Look for the view named *video_game_sales_1* to proceed with the data visualization.
 
+*Sample Chart 1 - Bar Chart Legacy*
 
-...
+image::chart-1-bar-chart-legacy.png["Bar Chart Legacy"]
+
+
+*Sample Chart 2 -  Tree Map*
+
+image::chart-2-tree-map.png["Tree map"]
 
