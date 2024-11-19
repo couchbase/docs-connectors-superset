@@ -27,7 +27,7 @@ Download and install https://superset.apache.org/docs/quickstart[Apache Superset
 Launch Apache Superset and set up a new database connection. 
 Select Couchbase as the database type and provide the necessary connection details.
 
-There are three types of connection possible:
+The three types of connection possible:
 
 [{tabs}]
 ====
