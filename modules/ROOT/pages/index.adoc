@@ -25,9 +25,8 @@ Download and install https://superset.apache.org/docs/quickstart[Apache Superset
 
 == Setting a Secure Connection
 
-Couchbase *strongly* recommends that you secure your ODBC connection using SSL.
-This ensures encryption of the communication between Power BI and the Couchbase Server/Capella.
-
+Couchbase *strongly* recommends that you secure your Superset connection using SSL.
+This ensures encryption of the communication between SQLAlchemy and the Couchbase Server/Capella.
 
 [tabs]
 ====
@@ -35,7 +34,7 @@ Capella Operational::
 +
 --
 You need to get a connection string for your database
-and generate an API key to plug into the ODBC connector.
+and generate an API key to plug into the Superset connector.
 
 [#copy-connection-string]#To obtain the `connection string`.#
 
