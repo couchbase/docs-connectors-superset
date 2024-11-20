@@ -149,17 +149,25 @@ Capella Operational::
   . Go to: Settings → Database Connections → Add Database
   . Select Couchbase from the list of databases.
 
-Fill Connection Details:
-
+Fill connection details:
++
 [horizontal]
 *Host*:: Fill in the connection string you copied here.
+
 *Port*:: Not required.
+
 *Database Name*:: Optional; specify the database name if needed.
-*Username*:: Enter the username you created in the User Account section
+
+*Username*:: Enter the username you created in the User Account section.
+
 *Password*:: Enter the password you allocated to the user here.
+
 *Display Name*:: Enter a name for this connection.
+
 *Additional Parameters*:: Not required.
+
 *SSL*:: Must be enabled.
+
 --
 
 Capella Columnar::
@@ -170,17 +178,25 @@ Capella Columnar::
   . Go to: Settings → Database Connections → Add Database
   . Select Couchbase from the list of databases.
 
-Fill Connection Details:
-
+Fill connection details:
++
 [horizontal]
 *Host*:: Fill in the connection string you copied here.
+
 *Port*:: Not required.
+
 *Database Name*:: Optional; specify the database name if needed.
-*Username*:: Enter the username you created in the User Account section
+
+*Username*:: Enter the username you created in the User Account section.
+
 *Password*:: Enter the password you allocated to the user here.
+
 *Display Name*:: Enter a name for this connection.
+
 *Additional Parameters*:: Not required.
+
 *SSL*:: Must be enabled.
+
 --
 
 Self-Managed Couchbase Server::
@@ -192,9 +208,8 @@ Self-Managed Couchbase Server::
   . Select Couchbase from the list of databases.
 
 Fill Connection Details:
-
++
 [horizontal]
-
 *Host*:: Enter Couchbase cluster IP address.
 
 *Port*:: Use 11207 for a secure connection.
