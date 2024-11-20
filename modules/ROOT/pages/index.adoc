@@ -22,64 +22,197 @@ pip install couchbase-sqlalchemy
 
 Download and install https://superset.apache.org/docs/quickstart[Apache Superset] following the official documentation.
 
+== Setting up a Secure Connection
+
+Couchbase *strongly* recommends that you secure your ODBC connection using SSL.
+This ensures encryption of the communication between Power BI and the Couchbase server/Capella.
+
+
+[tabs]
+====
+Capella Operational::
++
+--
+You will need to get a connection string for your database
+and generate an API key to plug into the ODBC connector.
+
+[#copy-connection-string]#To obtain the `connection string`.#
+
+. Sign in to your Capella instance as an Administrator.
+. Select the menu:Connect[] item from the top-level menu.
+. Make a copy of the `public connection string`.
++
+image::get-connection-string.png[copying connection string]
++
+. In the next section of the page, you will find the link to create a list of
+menu:Allowed IP Addresses[].
+Click on the link to create an entry for the IP address of the machine from which you're running Power BI.
++
+image::allowed-ip-addresses.png[creating-allowed-ip address]
++
+TIP: You can use the btn:[Add Current IP Address] button to fill in the address of the machine currently running the web console.
+
+. [#setup-database-access]#Return to the *Connect* screen and click on the btn:[Database Access] link.#
+Create a new database access entry, setting values for `bucket`, and `scopes`.
++
+image::create-database-access.png[Creating database access]
+
+. To set up a secure connection, you will need to retrieve the root certificate for your Capella instance.
++
+.. Click on btn:[Security Certificate] in the left menu.
+.. Click on btn:[Download] to transfer a copy of the root certificate to your local machine.
++
+image::download-root-certificate.png[]
+--
+
+Capella Columnar::
++
+--
+
+For details on creating a Capella Columnar instance,
+first see xref:columnar:admin:prepare-project.adoc[Creating a Capella Columnar Cluster].
+
+[#capella-columnar-connection-string]#You will need to access the Capella administration console to get the connection string for your columnar database.#
+
+. Sign in to your Capella instance as an `Organization owner` or `Project owner`.
+. Select menu:Columnar[] from the top-level page menu.
+. Select your Columnar cluster from the list.
+. Select menu:Settings[] from the top-level page menu.
++
+image::select-columnar-cluster-settings.png[]
++
+. Select menu:Connection String[] from the left-hand menu.
++
+image::get-capella-columnar-connection-string.png[]
++
+. Make a note of the connection string.
+
+Next, you need to add the IP address of the machine from which you are running Power BI,
+ so that Capella will allow the machine to access the columnar data.
+
+. Click on menu:Allowed IP Addresses[] in the left-hand menu.
+. Click the btn:[Add Allowed IP] button.
+
++
+image::capella-columnar-add-allowed-ip.png[]
++
+. Enter the IP address of the Power BI host machine.
++
+TIP: You can use the btn:[Add Current IP Address] button to fill in the address of the machine currently running the web console.
+
+[#capella-columnar-user-account]#Now, you will need to create a user account for Power BI to access the columnar data.#
+
+. Return to the menu:Settings[] page, then click on menu:Access Control[] in the left-hand menu.
+. Click on btn:[Create Account].
+. Add a `username` and `password` for the new account.
+. Make sure you set assign  `sys_view_reader` to the list of roles.
++
+image::capella-columnar-user-account.png[]
++
+. Click btn:[Create Account] to finish setting up the user account.
+--
+
+Self-Managed Couchbase Server::
++
+--
+
+[#download-root-certificate]#To create a secure connection to a self-managed Couchbase Server instance, you need to get the root certificate from the Administrator's Console.#
+
+. Use your web browser to access the Admin console and log in as an Administrator.
+. Use the left-hand menu to access the menu:Security[] settings.
+. From the top menu, select menu:Certificates[]. This will take you to the page from which you can view the server's security certificates:
++
+image::access-root-certificate.png[]
++
+. Copy *all* the text in the Trusted *Root Certificates* section (start from `BEGIN CERTIFICATE` and include `END CERTIFICATE` ),
+and save the text to an accessible `PEM` file.
+E.g., `C:\Users\user\certificate.pem`).
++
+You will use this file later when you create the Superset connection.
+--
+
+====
+
 == Configure the Connection in Superset
 
 Launch Apache Superset and set up a new database connection. 
 Select Couchbase as the database type and provide the necessary connection details.
 
-The three types of connection possible:
-
-[{tabs}]
+[tabs]
 ====
+
+Capella Operational::
++
+--
+. Open the Superset portal.
+. Add Database Connection:
+  . Go to: Settings → Database Connections → Add Database
+  . Select Couchbase from the list of databases.
+
+Fill Connection Details:
+
+[horizontal]
+*Host*:: Fill in the connection string you copied here.
+*Port*:: Not required.
+*Database Name*:: Optional; specify the database name if needed.
+*Username*:: Enter the username you created in the User Account section
+*Password*:: Enter the password you allocated to the user here.
+*Display Name*:: Enter a name for this connection.
+*Additional Parameters*:: Not required.
+*SSL*:: Must be enabled.
+--
+
 Capella Columnar::
 +
 --
-Connecting Apache Superset with Capella Columnar, you'll require the following details:
+. Open the Superset portal.
+. Add Database Connection:
+  . Go to: Settings → Database Connections → Add Database
+  . Select Couchbase from the list of databases.
 
-. Connection String: This string typically includes necessary connection details such as the host address and port. You can get this from your running Capella Columnar environment.
-+
-image::get-connection-string.png["get connection string"]
+Fill Connection Details:
 
-+
-. Get UserName and Password from Access Control.
-+
-image::get-username-pswrd-from-accesscontrol.png["get username and password from access control"]
-
-+
-. Set up the server. 
-+
-image::setup-the-server.png[setup the server]
+[horizontal]
+*Host*:: Fill in the connection string you copied here.
+*Port*:: Not required.
+*Database Name*:: Optional; specify the database name if needed.
+*Username*:: Enter the username you created in the User Account section
+*Password*:: Enter the password you allocated to the user here.
+*Display Name*:: Enter a name for this connection.
+*Additional Parameters*:: Not required.
+*SSL*:: Must be enabled.
 --
 
-Couchbase Analytics::
+Self-Managed Couchbase Server::
 +
 --
-*Couchbase Analytics with SSL*
+. Open the Superset portal.
+. Add Database Connection: 
+  . Go to: Settings → Database Connections → Add Database
+  . Select Couchbase from the list of databases.
 
-. Enter the *Host* and *Port* details of the server. Port is 11207 in case of SSL based connections.
-. Add the Trusted Root Certificate path. It should be accessible to superset server.
+Fill Connection Details:
 
-image::couchbase-analytics-with-ssl.png["Couchbase Analytics with SSL"]
+[horizontal]
 
-*Couchbase Analytics without SSL*
+*Host*:: Enter Couchbase cluster IP address.
 
-Enter the *Host* and *Port* details of the server. Port is 11210 in this case.
+*Port*:: Use 11207 for a secure connection.
 
-image::couchbase-analytics-without-ssl.png["Couchbase Analytics without SSL"]
+*Database Name*:: Optional; specify target database if needed.
+
+*Username*:: Enter user with CBAS permissions (e.g., Cluster Admin).
+
+*Password*:: Enter the cluster password.
+
+*Display Name*:: Enter a name for this connection.
+
+*Additional Parameters*:: For certificates, enter: truststorepath=C:\path\to\certificate.txt
+
+*SSL*:: Enable if using SSL, otherwise ignore.
 --
 
-Capella Analytics::
-+
---
-These steps are similar to capella-columnar. 
-
-. Get connection string from the running cluster.
-. Create access credentials.
-
-image::connect-a-database-capella-analytics.png["Connect a database in Capella Analytics"]
---
 ====
-
 
 == Create Tabular Analytics View
 
