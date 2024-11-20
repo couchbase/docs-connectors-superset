@@ -150,7 +150,7 @@ Capella Operational::
   . Select Couchbase from the list of databases.
 
 Fill connection details:
-+
+
 [horizontal]
 *Host*:: Fill in the connection string you copied here.
 
@@ -179,7 +179,7 @@ Capella Columnar::
   . Select Couchbase from the list of databases.
 
 Fill connection details:
-+
+
 [horizontal]
 *Host*:: Fill in the connection string you copied here.
 
@@ -208,7 +208,7 @@ Self-Managed Couchbase Server::
   . Select Couchbase from the list of databases.
 
 Fill Connection Details:
-+
+
 [horizontal]
 *Host*:: Enter Couchbase cluster IP address.
 
