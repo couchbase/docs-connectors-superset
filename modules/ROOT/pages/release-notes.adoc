@@ -5,13 +5,11 @@
 [abstract]
 {description}
 
-The xref:index.adoc[Couchbase Superset Connector] provides integration between Columnar...???
+The xref:index.adoc[Couchbase Superset Connector] allows you to visualize your data using the Apache Superset data visualization platform.
 
+== Version 1.0 (2024-11-27)
 
+https://pypi.org/project/couchbase-sqlalchemy/[Download]
 
-== Version 1.0 (2024-??-??)
-
-
-
-This is the initial release of the Capella Columnar Power BI Connector.
+This is the initial release of the Couchbase Superset Connector.
 
