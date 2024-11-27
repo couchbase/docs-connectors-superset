@@ -273,7 +273,7 @@ SELECT video_game_sales.* FROM video_game_sales;
 To visualize the data, follow these steps in Apache Superset:
 
 . Navigate to the Dataset section in the Superset dashboard.
-. Select `Couchbase-Analytics-With-SSL` as the database.
+. From the *DATABASE* drop-down, choose the *Display Name* of the Couchbase connection you configured in Superset.
 . Choose *Default* as the schema.
 . Look for the view named *video_game_sales_1* to proceed with the data visualization.
 
