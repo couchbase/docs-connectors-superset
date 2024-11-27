@@ -57,12 +57,6 @@ Create a new database access entry, setting values for `bucket`, and `scopes`.
 +
 image::create-database-access.png[Creating database access]
 
-. To set up a secure connection, you'll need to retrieve the root certificate for your Capella instance.
-+
-.. Click on btn:[Security Certificate] in the left menu.
-.. Click on btn:[Download] to transfer a copy of the root certificate to your local machine.
-+
-image::download-root-certificate.png[]
 --
 
 Capella Columnar::
@@ -216,7 +210,7 @@ Fill connection details:
 
 *Database Name*:: Optional; specify the database name if needed.
 
-*Username*:: Enter user with Analytics permissions (e.g., Cluster Admin).
+*Username*:: Enter user with Analytics permissions (e.g., Analytics Reader).
 
 *Password*:: Enter the cluster password.
 
