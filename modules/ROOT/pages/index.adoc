@@ -105,7 +105,7 @@ TIP: You can use the btn:[Add Current IP Address] button to fill in the address 
 . Return to the menu:Settings[] page, then click on menu:Access Control[] in the left-hand menu.
 . Click on btn:[Create Account].
 . Add a `username` and `password` for the new account.
-. Make sure you set assign  `sys_view_reader` to the list of roles.
+. Make sure you set assign `sys_view_reader` to the list of roles.
 +
 image::capella-columnar-user-account.png[]
 +
@@ -207,16 +207,16 @@ Self-Managed Couchbase Server::
   . Go to: Settings → Database Connections → Add Database
   . Select Couchbase from the list of databases.
 
-Fill Connection Details:
+Fill connection details:
 
 [horizontal]
 *Host*:: Enter Couchbase cluster IP address.
 
 *Port*:: Use 11207 for a secure connection.
 
-*Database Name*:: Optional; specify target database if needed.
+*Database Name*:: Optional; specify the database name if needed.
 
-*Username*:: Enter user with CBAS permissions (e.g., Cluster Admin).
+*Username*:: Enter user with Analytics permissions (e.g., Cluster Admin).
 
 *Password*:: Enter the cluster password.
 
@@ -236,14 +236,7 @@ In Couchbase Analytics, define https://docs.couchbase.com/columnar/sqlpp/5a_view
 
 == Use the Couchbase Superset Connector
 
-. To create tabular views for graphical visualization, start by loading data into a collection. 
-
-For this example, you'll use a dataset called https://www.kaggle.com/datasets/gregorut/videogamesales[video_game_sales.json].
-
-. Make sure your `video_game_sales.json` file is accessible in a location that your database system can read from. 
-This file contains structured JSON data about video game sales.
-
-. Create External dataset using `video_game_sales`.
+. Create an https://docs.couchbase.com/columnar/sqlpp/5_ddl_external.html[External Collection] using https://www.kaggle.com/datasets/gregorut/videogamesales[`video_games_sales.json`] file into Columnar.
 
 . On querying Select * from `Default.Default.video_game_sales limit 1`. 
 
