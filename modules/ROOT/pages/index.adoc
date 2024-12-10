@@ -30,34 +30,6 @@ This ensures encryption of the communication between Superset and the Couchbase 
 
 [tabs]
 ====
-Capella Operational::
-+
---
-You need to get a connection string for your database
-and generate an API key to plug into the Superset connector.
-
-[#copy-connection-string]#To obtain the `connection string`.#
-
-. Sign in to your Capella instance as an Administrator.
-. Select the menu:Connect[] item from the top-level menu.
-. Make a copy of the `public connection string`.
-+
-image::get-connection-string.png[copying connection string]
-+
-. In the next section of the page, you'll find the link to create a list of
-menu:Allowed IP Addresses[].
-Click on the link to create an entry for the IP address of the machine from which you're running Power BI.
-+
-image::allowed-ip-addresses.png[creating-allowed-ip address]
-+
-TIP: You can use the btn:[Add Current IP Address] button to fill in the address of the machine currently running the web console.
-
-. [#setup-database-access]#Return to the *Connect* screen and click on btn:[Database Access] link.#
-Create a new database access entry, setting values for `bucket`, and `scopes`.
-+
-image::create-database-access.png[Creating database access]
-
---
 
 Capella Columnar::
 +
@@ -106,25 +78,6 @@ image::capella-columnar-user-account.png[]
 . Click btn:[Create Account] to finish setting up the user account.
 --
 
-Self-Managed Couchbase Server::
-+
---
-
-[#download-root-certificate]#To create a secure connection to a self-managed Couchbase Server instance, you need to get the root certificate from the Administrator's Console.#
-
-. Use your web browser to access the Admin console and log in as an Administrator.
-. Use the left-hand menu to access the menu:Security[] settings.
-. From the top menu, select menu:Certificates[]. This takes you to the page from which you can view the server's security certificates:
-+
-image::access-root-certificate.png[]
-+
-. Copy *all* the text in the Trusted *Root Certificates* section (start from `BEGIN CERTIFICATE` and include `END CERTIFICATE`),
-and save the text to an accessible `PEM` file.
-E.g., `C:\Users\user\certificate.pem`.
-+
-You will use this file later when you create the Superset connection.
---
-
 ====
 
 == Configure the Connection in Superset
@@ -134,35 +87,6 @@ Select Couchbase as the database type and provide the necessary connection detai
 
 [tabs]
 ====
-
-Capella Operational::
-+
---
-. Open the Superset portal.
-. Add Database Connection:
-  . Go to: Settings → Database Connections → Add Database
-  . Select Couchbase from the list of databases.
-
-Fill connection details:
-
-[horizontal]
-*Host*:: Fill in the connection string you copied here.
-
-*Port*:: Not required.
-
-*Database Name*:: Optional; specify the database name if needed.
-
-*Username*:: Enter the username you created in the User Account section.
-
-*Password*:: Enter the password you allocated to the user here.
-
-*Display Name*:: Enter a name for this connection.
-
-*Additional Parameters*:: Not required.
-
-*SSL*:: Must be enabled.
-
---
 
 Capella Columnar::
 +
@@ -192,35 +116,6 @@ Fill connection details:
 *SSL*:: Must be enabled.
 
 --
-
-Self-Managed Couchbase Server::
-+
---
-. Open the Superset portal.
-. Add Database Connection: 
-  . Go to: Settings → Database Connections → Add Database
-  . Select Couchbase from the list of databases.
-
-Fill connection details:
-
-[horizontal]
-*Host*:: Enter Couchbase cluster IP address.
-
-*Port*:: Use 11207 for a secure connection.
-
-*Database Name*:: Optional; specify the database name if needed.
-
-*Username*:: Enter user with Analytics permissions (e.g., Analytics Reader).
-
-*Password*:: Enter the cluster password.
-
-*Display Name*:: Enter a name for this connection.
-
-*Additional Parameters*:: For certificates, enter: truststorepath=C:\path\to\certificate.txt
-
-*SSL*:: Enable if using SSL, otherwise ignore.
---
-
 ====
 
 == Create Tabular Analytics View
