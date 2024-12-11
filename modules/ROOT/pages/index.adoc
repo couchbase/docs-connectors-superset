@@ -53,7 +53,7 @@ image::get-capella-columnar-connection-string.png[]
 +
 . Make a note of the connection string.
 
-Next, you need to add the IP address of the machine from which you're running Power BI,
+Next, you need to add the IP address of the machine from which you're running Superset,
  so that Capella allows the machine to access the Columnar data.
 
 . Click on menu:Allowed IP Addresses[] in the left-hand menu.
@@ -62,11 +62,11 @@ Next, you need to add the IP address of the machine from which you're running Po
 +
 image::capella-columnar-add-allowed-ip.png[]
 +
-. Enter the IP address of the Power BI host machine.
+. Enter the IP address of the Superset host machine.
 +
 TIP: You can use the btn:[Add Current IP Address] button to fill in the address of the machine currently running the web console.
 
-[#capella-columnar-user-account]#Now, you will need to create a user account for Power BI to access the columnar data.#
+[#capella-columnar-user-account]#Now, you will need to create a user account for Superset to access the columnar data.#
 
 . Return to the menu:Settings[] page, then click on menu:Access Control[] in the left-hand menu.
 . Click on btn:[Create Account].
