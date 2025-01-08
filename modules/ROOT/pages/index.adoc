@@ -1,13 +1,13 @@
 = Introduction
 :page-topic-type: guide
 :page-toclevels: 2
-:description: The Couchbase Apache Superset Connector provides the integration between tabular views of your Capella Columnar collections or query results and Apache Superset's interactive data visualization platform.
+:description: The Couchbase Apache Superset Connector lets you visualize data from Tabular Analytics Views (TAV) in Apache Superset.
 
 [abstract]
 --
 {description}
 
-The Couchbase SQLAlchemy Connector integrates Capella Columnar instances with the open-source data exploration and visualization platform Apache Superset by leveraging the Couchbase tabular analytics views capability.
+It works by connecting Capella Columnar to Apache Superset using SQLAlchemy, allowing you to create interactive visualizations from your tabular data.
 --
 
 == Install the Couchbase SQLAlchemy Connector
