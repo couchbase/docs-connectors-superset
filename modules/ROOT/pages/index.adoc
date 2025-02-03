@@ -19,6 +19,17 @@ To install the Couchbase SQLAlchemy Connector, open the command prompt (`cmd`), 
 pip install couchbase-sqlalchemy
 ----
 
+To install the driver in Docker images, create the file `requirements-local.txt` in a subdirectory called `docker` that exists in the directory with your `docker-compose.yml` or `docker-compose-non-dev.yml` file.
+
+[source, console]
+----
+# Run from the repo root:
+touch ./docker/requirements-local.txt
+echo "couchbase-sqlalchemy" >> ./docker/requirements-local.txt
+----
+
+For more details on how to install driver in Docker images, see https://superset.apache.org/docs/configuration/databases/#installing-drivers-in-docker-images[Installing Driver in Docker Images]. 
+
 == Install Apache Superset
 
 Download and install https://superset.apache.org/docs/quickstart[Apache Superset] following the official documentation.
